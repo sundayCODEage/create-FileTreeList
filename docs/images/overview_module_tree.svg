@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1.5; }
+      .header-bg { fill: #1e293b; }
+      .card { fill: #ffffff; stroke: #94a3b8; stroke-width: 1.2; }
+      .card-accent { fill: #eff6ff; stroke: #3b82f6; stroke-width: 1.5; }
+      .card-excel { fill: #ffffff; stroke: #10b981; stroke-width: 1.5; }
+      .title { font-family: 'BIZ UDゴシック', 'Meiryo', sans-serif; font-size: 18px; font-weight: bold; fill: #ffffff; }
+      .subtitle { font-family: 'BIZ UDゴシック', 'Meiryo', sans-serif; font-size: 12px; fill: #cbd5e1; }
+      .step-num { font-family: 'Segoe UI', 'BIZ UDゴシック', sans-serif; font-size: 12px; font-weight: bold; fill: #ffffff; }
+      .box-title { font-family: 'BIZ UDゴシック', 'Meiryo', sans-serif; font-size: 14px; font-weight: bold; fill: #0f172a; }
+      .box-text { font-family: 'BIZ UDゴシック', 'Meiryo', sans-serif; font-size: 11.5px; fill: #334155; }
+      .code-text { font-family: 'Consolas', 'BIZ UDゴシック', monospace; font-size: 11.5px; fill: #1e293b; }
+      .folder-text { font-family: 'Consolas', 'BIZ UDゴシック', monospace; font-size: 11.5px; font-weight: bold; fill: #0066cc; }
+      .link-text { font-family: 'Consolas', 'BIZ UDゴシック', monospace; font-size: 11px; fill: #0563c1; text-decoration: underline; }
+      .badge { font-family: 'BIZ UDゴシック', 'Meiryo', sans-serif; font-size: 10.5px; font-weight: bold; fill: #1d4ed8; }
+      .arrow { stroke: #64748b; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .loop-arrow { stroke: #2563eb; stroke-width: 2; stroke-dasharray: 4 3; fill: none; marker-end: url(#arrowhead-blue); }
+    </style>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#64748b" />
+    </marker>
+    <marker id="arrowhead-blue" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2563eb" />
+    </marker>
+  </defs>
+
+  <!-- 外枠背景 -->
+  <rect class="bg" x="5" y="5" width="950" height="430" rx="12" />
+
+  <!-- ヘッダーバー -->
+  <rect class="header-bg" x="20" y="18" width="920" height="54" rx="10" />
+  <text class="title" x="40" y="42">Module_Tree : 高速ディレクトリツリー生成エンジン (Excel VBA)</text>
+  <text class="subtitle" x="40" y="61">再帰探索 × クイックソート × 動的配列バッファリング × 2次元配列一括出力</text>
+
+  <!-- Phase 1: 入力・探索 -->
+  <rect class="card" x="25" y="90" width="250" height="325" rx="8" />
+  <rect x="25" y="90" width="250" height="28" rx="8" fill="#475569" />
+  <text class="step-num" x="38" y="109">PHASE 1 : 再帰探索 ＆ 整列</text>
+
+  <!-- Step 1-1 -->
+  <rect class="card-accent" x="40" y="132" width="220" height="62" rx="8" />
+  <text class="box-title" x="52" y="152">ProcessFolderRecursively</text>
+  <text class="box-text" x="52" y="170">・深さ優先探索（DFS）で階層走査</text>
+  <text class="box-text" x="52" y="186">・階層状態に応じ罫線（├─ / └─ / │）生成</text>
+
+  <!-- 再帰ループ矢印 -->
+  <path class="loop-arrow" d="M 260 150 C 272 150, 272 180, 260 180" />
+
+  <line class="arrow" x1="150" y1="194" x2="150" y2="216" />
+
+  <!-- Step 1-2 -->
+  <rect class="card" x="40" y="220" width="220" height="78" rx="8" />
+  <text class="box-title" x="52" y="240">SortAndFilterItems</text>
+  <text class="box-text" x="52" y="258">・一時ファイル(~$*, *.tmp)の除外</text>
+  <text class="box-text" x="52" y="274">・権限エラー(Err.70)の安全スキップ</text>
+  <text class="box-text" x="52" y="290">・名前配列キーによる高速比較</text>
+
+  <line class="arrow" x1="150" y1="298" x2="150" y2="320" />
+
+  <!-- Step 1-3 -->
+  <rect class="card" x="40" y="324" width="220" height="72" rx="8" />
+  <text class="box-title" x="52" y="344">QuickSortObjects</text>
+  <text class="box-text" x="52" y="362">・オブジェクト配列のクイックソート</text>
+  <text class="box-text" x="52" y="378">・O(N log N) でファイル/フォルダ整列</text>
+
+  <!-- Phase 1 to Phase 2 矢印 -->
+  <line class="arrow" x1="275" y1="252" x2="305" y2="252" />
+
+  <!-- Phase 2: メモリバッファ -->
+  <rect class="card" x="310" y="90" width="255" height="325" rx="8" />
+  <rect x="310" y="90" width="255" height="28" rx="8" fill="#2563eb" />
+  <text class="step-num" x="323" y="109">PHASE 2 : インメモリ蓄積 ＆ 一括転送</text>
+
+  <!-- Step 2-1 -->
+  <rect class="card-accent" x="325" y="132" width="225" height="82" rx="8" />
+  <text class="box-title" x="337" y="152">AddRowToBuffer (動的配列拡張)</text>
+  <text class="box-text" x="337" y="170">・初期容量 2,048行の構造体配列</text>
+  <text class="box-text" x="337" y="186">・容量不足時は 2倍ずつ自動拡張</text>
+  <text class="badge" x="337" y="204">★ 探索中のセル書き込みゼロ (Amortized O(1))</text>
+
+  <line class="arrow" x1="437" y1="214" x2="437" y2="238" />
+
+  <!-- Step 2-2 -->
+  <rect class="card" x="325" y="242" width="225" height="154" rx="8" />
+  <text class="box-title" x="337" y="262">FlushBufferToSheet (一括出力)</text>
+  <text class="box-text" x="337" y="282">1. 2次元配列へ変換し1回でシート転写</text>
+  <text class="box-text" x="337" y="300">2. =HYPERLINK数式配列の一括投入</text>
+  <text class="box-text" x="337" y="318">3. 250文字超パスは自動で文字列化</text>
+  <text class="box-text" x="337" y="336">4. 数式投入後にフォントを一括上書き</text>
+  <text class="box-text" x="337" y="354">5. Union(50セル単位)によるバッチ着色</text>
+  <text class="badge" x="337" y="380">★ Hyperlinks.Add ループ負荷を完全解消</text>
+
+  <!-- Phase 2 to Phase 3 矢印 -->
+  <line class="arrow" x1="565" y1="252" x2="595" y2="252" />
+
+  <!-- Phase 3: Excel シート出力イメージ -->
+  <rect class="card-excel" x="600" y="90" width="340" height="325" rx="8" />
+  <rect x="600" y="90" width="340" height="28" rx="8" fill="#059669" />
+  <text class="step-num" x="615" y="109">OUTPUT : Excel ワークシート (BIZ UDゴシック 9pt)</text>
+
+  <!-- Excel テーブルヘッダー模擬 -->
+  <rect x="614" y="132" width="312" height="22" fill="#e2e8f0" stroke="#cbd5e1" />
+  <text class="box-text" x="622" y="147" font-weight="bold" fill="#dc2626">構成図 (A列)</text>
+  <text class="box-text" x="780" y="147" font-weight="bold">サイズ</text>
+  <text class="box-text" x="835" y="147" font-weight="bold">パス (E列)</text>
+
+  <!-- Excel ツリー行模擬 -->
+  <rect x="614" y="154" width="312" height="190" fill="#ffffff" stroke="#e2e8f0" />
+  
+  <text class="code-text" x="620" y="172" font-weight="bold">Project_Root</text>
+  
+  <text class="code-text" x="620" y="192" xml:space="preserve">  ├─ README.md</text>
+  <text class="code-text" x="780" y="192">4.2 KB</text>
+  <text class="link-text" x="835" y="192">C:\...\README.md</text>
+
+  <text class="code-text" x="620" y="212" xml:space="preserve">  ├─ config.json</text>
+  <text class="code-text" x="780" y="212">1.1 KB</text>
+  <text class="link-text" x="835" y="212">C:\...\config.json</text>
+
+  <text class="code-text" x="620" y="232" xml:space="preserve">  ├─ </text>
+  <text class="folder-text" x="652" y="232">[src]</text>
+
+  <text class="code-text" x="620" y="252" xml:space="preserve">  │     ├─ Main.bas</text>
+  <text class="code-text" x="780" y="252">12.5 KB</text>
+  <text class="link-text" x="835" y="252">C:\...\Main.bas</text>
+
+  <text class="code-text" x="620" y="272" xml:space="preserve">  │     └─ Utils.bas</text>
+  <text class="code-text" x="780" y="272">8.4 KB</text>
+  <text class="link-text" x="835" y="272">C:\...\Utils.bas</text>
+
+  <text class="code-text" x="620" y="292" xml:space="preserve">  └─ </text>
+  <text class="folder-text" x="652" y="292">[docs]</text>
+
+  <text class="code-text" x="620" y="312" xml:space="preserve">         └─ guide.pdf</text>
+  <text class="code-text" x="780" y="312">340.0 KB</text>
+  <text class="link-text" x="835" y="312">C:\...\guide.pdf</text>
+
+  <!-- 特徴フッターメモ -->
+  <rect x="614" y="354" width="312" height="48" rx="6" fill="#f0fdf4" stroke="#bbf7d0" />
+  <text class="box-text" x="624" y="372">・オートフィルタ自動設定 ＆ ウィンドウ枠固定(4行目)</text>
+  <text class="box-text" x="624" y="390">・フォルダは青字、クリックで開くハイパーリンク付き</text>
+</svg>
