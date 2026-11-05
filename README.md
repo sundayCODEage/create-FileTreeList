@@ -61,7 +61,9 @@
 | D列 | サイズ | #,##0.0 KB（右揃え） |
 | E列 | パス（ハイパーリンク） | フルパス（クリックで対象ファイルを開く。長パスはグレー表示） |
 
----
+<p align="center">
+  <img src="/docs/images/Ws_FileTreeList.png" width="95%" alt="ファイル階層一覧">
+</p>
 
 ### 処理フロー図
 
